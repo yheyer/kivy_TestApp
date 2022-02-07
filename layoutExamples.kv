@@ -1,0 +1,34 @@
+<Interface>:
+    # orientation: "vertical" (Boxlayout)
+    rows: 2
+    row_force_default: True
+    row_default_height: 40
+    spacing: [10,5]
+    padding: [20,10, 10,10]
+
+    Button:
+        markup: True    #when Text should be marked (bold)
+        text: "Hello [b]World[/b]"
+        pos: dp(300), dp(300)   # densityPixels
+        size: 200, 100
+    Label:
+        background_color: (1,0,1,0)
+        canvas.before:
+            Color:
+                rgba: self.background_color
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        text: "Label"
+        pos : dp(300), dp(450)
+        size : 200, 100
+        background_color: 0, 0, 0, 1
+        font_size: 30
+    TextInput:
+        pos: dp(300), dp(150)
+        size: 200, 100
+        multiline: False
+        text: "Enter name..."
+        on_text_validate: root.On_Enter_Pressed()
+    Button:
+        text: "Button 2"

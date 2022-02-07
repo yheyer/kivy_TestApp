@@ -1,36 +1,99 @@
-<Interface>:
-Interface:
-    # orientation: "vertical" (Boxlayout)
-    rows: 2
-    row_force_default: True
-    row_default_height: 40
-    spacing: [10,5]
-    padding: [20,10, 10,10]
+Page_Layout:
+<Game>:
+    orientation: "vertical"
+    ScrollView:
+        Buttons:
+            id: stacker
+            size_hint: 1, None
+            heigth: self.minimum_height
 
+    BoxLayout:
+        size_hint: 1, .2
+        Button:
+            text: "Create"
+            on_press: root.create_btn()
+        Button:
+            text: "Remove"
+            on_press: root.remove_btn()
+
+<Variables>:
+    #: set var 60
+    anything: "Test text!"
+    MDRoundFlatIconButton:
+        text: root._text_
+        font_size: var
+    MDRoundFlatIconButton:
+        text: root.anything
+        font_size: var
+
+
+
+
+<LogicalInterface>:
+    orientation: "vertical"
     Button:
-        markup: True    #when Text should be marked (bold)
-        text: "Hello [b]World[/b]"
-        pos: dp(300), dp(300)   # densityPixels
-        size: 200, 100
+        text: "Press me"
+        on_press: root.OnPressing(label)
+        on_release: root.OnReleasing(label, input)
     Label:
-        background_color: (1,0,1,0)
+        id: label
+        text: "Hello World"
+        color: 1,1,1,1
         canvas.before:
             Color:
-                rgba: self.background_color
+                rgba: 0, 0, 0, 1
             Rectangle:
                 size: self.size
                 pos: self.pos
-        text: "Label"
-        pos : dp(300), dp(450)
-        size : 200, 100
-        background_color: 0, 0, 0, 1
-        font_size: 30
     TextInput:
-        pos: dp(300), dp(150)
-        size: 200, 100
+        id: input
         multiline: False
-        text: "Enter name..."
-        on_text_validate: root.On_Enter_Pressed()
-    Button:
-        text: "Button 2"
+        text: ""
+
+
+
+<Page_Layout>:
+    Page_1:
+    Page_2:
+    Page_3:
+
+
+
+
+
+
+
+<RelativePractice>:
+    RelativeLayout:
+        size_hint: .4,.4
+        pos: 100,100
+        Button:
+            text: "Child"
+            size_hint: .5,.5
+            pos_hint: {"x": 0, "top":1}
+
+
+
+
+
+
+
+
+
+<scroller@ScrollView>:
+    bar_margin: 5
+    bar_color: .3, .4 ,.5, 1
+    bar_width: 10
+    bar_inactive_color: .3,.4,.5,.5
+    StackInterface:
+        size_hint: 1, None
+        height: self.minimum_height
+
+<StackInterface>:
+    padding: [10,10,10,0]
+
+
+
+
+
 
